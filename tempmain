@@ -1,0 +1,72 @@
+import java.util.*;
+  import java.io.*;
+  
+  public class TestTemperatureMain{
+    public static void main(String[] args) throws FileNotFoundException{
+      ArrayList<TemperatureLog> tempList = new ArrayList<TemperatureLog>();
+      
+      Scanner input = new Scanner (new File("data.txt"));
+      
+      read2BuildArrayList(input, tempList);
+      int count = 0;
+      int[] id = new int[40];
+      int[] year = new int[40];
+      int[] sc = new int[40];
+      int[] temp = new int[40];
+      for(int x = 0; x < year.length; x++){
+        while(input.hasNextInt()){
+         input.nextInt();
+         id[count] = input.nextInt();
+         year[count] = input.nextInt();
+         sc[count] = input.nextInt();
+         temp[count] = input.nextInt();
+         count++;
+        }
+        System.out.println(tempList);
+      }
+      
+    }
+    
+    private static void map(ArrayList<TemperatureLog> tempList){
+      
+    }
+    
+    public static void read2BuildArrayList(Scanner input, ArrayList<TemperatureLog> list){
+      while(input.hasNextLine()){
+       String line = input.nextLine();
+       System.out.println(line);
+       TemperatureLog tempObj = new TemperatureLog(line);
+       list.add(tempObj);
+      }
+    }
+    
+    public static void decomposeArrayList(ArrayList<TemperatureLog> list){
+     String IDStr;
+     String yearStr;
+     String tempStr;
+     String sensorStr;
+     
+     for(int y = 0; y < list.size(); y++){
+      TemperatureLog tempObj = list.get(y);
+      Scanner line = new Scanner(tempObj.getARow());
+      while(line.hasNext()){
+        if(line.hasNextInt()){
+         tempObj.setID(line.nextInt()); 
+        }
+        else{
+          String str = line.next();
+          
+          if(str.startsWith("0000")){
+           tempObj.setYear(str.substring(4, 8));
+           tempObj.setSensorCode(str.substring(8, str.length()));
+          }
+          else if(str.startsWith("+") || str.startsWith("-")){
+           tempObj.setTempInt(str.substring(1,5)); 
+          }
+        }
+      }
+      System.out.println(tempObj.toStringIndividual());
+     }
+    }
+    
+  }
