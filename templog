@@ -1,0 +1,94 @@
+public class TemperatureLog {
+  private String aRow;
+  private int ID;
+  private int year;
+  private double tempDbl;  // temperature value typed either double or int
+  private int tempInt;
+  private String sensorCode;
+  
+  public TemperatureLog() 
+  {
+    aRow = "";
+    ID = 0;
+    year = 0;
+    tempDbl = 0.0;
+    tempInt = 0;
+    sensorCode = "";
+  } // end of TemperatureLog() 
+  
+  public TemperatureLog(String line) 
+  {
+    aRow = line;
+    ID = 0;
+    year = 0;
+    tempDbl = 0.0;
+    tempInt = 0;
+    sensorCode = "";
+  } // end of TemperatureLog()   
+  
+    
+  // get Methods
+  public String getARow() {
+    return this.aRow;
+  }
+  public int getID() {
+    return this.ID;
+  }
+  public int getYear() {
+    return this.year;
+  }
+  public double getTempDbl() {
+    return this.tempDbl;
+  }  
+  public int getTempInt() {
+    return this.tempInt;
+  }  
+  public String getSensorCode() {
+    return this.sensorCode;
+  }  
+  
+  // set Methods
+  public void setARow(String aRow) {
+    this.aRow = aRow;
+  }
+  public void setID(int ID) {
+    this.ID = ID;
+  }
+  public void setID(String IDStr) {
+    this.ID = Integer.parseInt(IDStr);
+  }
+  public void setYear(int year) {
+    this.year = year;
+  }
+  public void setYear(String yearStr) {
+    this.year = Integer.parseInt(yearStr);
+  }
+  public void setTempDbl(double tempDbl) {
+    this.tempDbl = tempDbl;
+  }
+  public void setTempDbl(String tempStr) {
+    this.tempDbl = Double.parseDouble(tempStr);
+  }
+  public void setTempInt(int tempInt) {
+    this.tempInt = tempInt;
+  }
+  public void setTempInt(String tempStr) {
+    this.tempInt = Integer.parseInt(tempStr);
+  }  
+  public void setSensorCode(String sensorCode) {
+    this.sensorCode = sensorCode;
+  }
+  
+  // toString() method for TemperatureLog
+  public String toString() {
+    return this.aRow;
+  }
+  
+    // toString() method for TemperatureLog
+  public String toStringIndividual() {
+    //String str = "ID:" + this.ID + ", Year:" + this,year + ", Temperature:" + this.tempInt + ", Sensor:" + this.sensorCode;
+    String str = " ID:" + this.ID + " Year:" + this.year + " Temperature;" + this.tempInt;
+    return str;
+  }
+  
+} // end of TemperatureLog
